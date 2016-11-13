@@ -11,7 +11,7 @@
             display none
             background url(../images/home/bg3.png) no-repeat center
             width 100%
-            float right
+            height 100%
             .ban_b3_pic
                 float right
                 margin-top 100px

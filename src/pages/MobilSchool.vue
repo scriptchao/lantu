@@ -373,36 +373,36 @@
             goOne(){
                 let _scrollTop = document.body.scrollTop;
                 let timer = setInterval(function () {
-                    if(_scrollTop < 1160){
-                        _scrollTop += 10;
+                    if(_scrollTop < 1370){
+                        _scrollTop += 30;
                         scrollTo(0, _scrollTop);
                         console.log(_scrollTop);
                     }else{
                         clearInterval(timer);
                     }
-                },5);
+                },15);
             },
             go(num){
                 let _scrollTop = document.body.scrollTop;
                 let timer = setInterval(function(){
-                    if(_scrollTop < 1170 + num *1021){
-                        _scrollTop += 10;
+                    if(_scrollTop < (1370 + num *1020)){
+                        _scrollTop += 30;
                         scrollTo(0, _scrollTop);
                     }else{
                         clearInterval(timer);
                     }
-                },5);
+                },15);
             },
             goBo(){
                 let _scrollTop = document.body.scrollTop;
                 let timer = setInterval(function () {
-                    if(_scrollTop < 5150){
-                        _scrollTop += 10;
+                    if(_scrollTop < 5500){
+                        _scrollTop += 30;
                         scrollTo(0, _scrollTop);
                     }else{
                         clearInterval(timer);
                     }
-                },5);
+                },15);
             },
 
         },
