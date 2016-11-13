@@ -39,6 +39,21 @@
                     top 40%
                     left 95%
                     cursor pointer
+    .runLeft
+        animation runLeft 1s ease forwards
+    @keyframes runLeft
+        to
+            transform translateX(300px)
+    .runRight
+        animation runRight 1s ease forwards
+    @keyframes runRight
+        to
+            transform translateX(-300px)
+
+
+
+    body
+        width 100%
 
 
 </style>
@@ -50,7 +65,7 @@
         </div>
         <div class="banner">
             <div class="ban_mobile">
-            <ul :style="{'left':(-1500 + 300*num)+'px'}" :class="{expand:(num !=5) && (num != -5)}">
+            <ul :style="{'left':(-1500 + 300*num)+'px'}" :class="{expand:(num !=5) && (num != -5)}" ref="box">
                 <li v-for="(item,index) of list" class="ban_min" :class="{ban_normal: index == (8-num) ||index ==(6-num),ban_max:index == (7 - num) }">
                     <a :href="item.href">
                         <img :src="item.src">
@@ -143,24 +158,35 @@
         components:{
 
         },
+        mounted(){
+            console.log(this);
+            this.$refs.box.addEventListener('animationend',() => {
+                console.log(this.num);
+                if(this.$refs.box.classList.contains('runLeft')){
+                    this.$refs.box.classList.remove('runLeft');
+                    if(this.num === 4 ){
+                        this.num = 0;
+                    }else {
+                        this.num = this.num + 1;
+                    }
+                }else{
+                    this.$refs.box.classList.remove('runRight');
+                    if(this.num === -4 ){
+                        this.num = 0;
+                    }else {
+                        this.num = this.num - 1;
+                    }
+                }
+            })
+        },
         methods:{
             leftPage(){
-                if(this.num ===4 ){
-                    this.num=0;
-                }else {
-                    let _num = this.num;
-                    this.num = _num + 1;
-                }
+                console.log(this);
+                console.log(this.$refs.box);
+                this.$refs.box.classList.add('runLeft');
             },
-            rightPage(e){
-                if(this.num === -4 ){
-                    this.num =0;
-                    console.log(this.num)
-                }else {
-                    let _num = this.num;
-                    this.num = _num - 1;
-                    console.log(this.num)
-                }
+            rightPage(){
+                this.$refs.box.classList.add('runRight');
             }
         }
     }
